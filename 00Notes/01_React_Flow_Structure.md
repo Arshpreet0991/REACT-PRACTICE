@@ -52,7 +52,7 @@ root.render(
 - < App /> is the root component that gets rendered.
 - React.StrictMode is a wrapper that helps identify potential issues in development.
 
-  ## App.js
+#### App.js
 
 - This App.js is called REACT COMPONENT
 
