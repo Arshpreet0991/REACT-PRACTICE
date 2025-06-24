@@ -40,31 +40,19 @@
 - the code has creates a card with image, heading, text and a button.
 - we will be using this card template to reuse the cards.
 
-```js
+```jsx
 import React from "react";
 
 function Card(props) {
   return (
-    <div className="max-w-xs rounded-md shadow-md bg-black text-gray-100 mb-8">
-      <img
-        src="https://images.pexels.com/photos/29536485/pexels-photo-29536485.jpeg"
-        alt="image"
-        className="object-cover object-center w-full rounded-t-md h-72 bg-gray-500"
-      />
-      <div className="flex flex-col justify-between p-6 space-y-8">
-        <div className="space-y-2">
-          <h2 className="text-3xl font-semibold tracking-wide">Lorem</h2>
-          <p className="text-gray-400">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio
-          </p>
-        </div>
-        <button
-          type="button"
-          className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md bg-gray-800 text-gray-200"
-        >
-          Read more
-        </button>
-      </div>
+    <div>
+      <img src="https://image source 1" />
+
+      <h2>Heading</h2>
+
+      <p>some description about the image</p>
+
+      <button> Read more </button>
     </div>
   );
 }
@@ -118,28 +106,18 @@ export default App;
 - Notice that we passed the values from app.jsx and handle those parameters inside the Card.jsx
 - App.jsx looks like this now:
 
-  ```js
-  import { useState } from "react";
-  import reactLogo from "./assets/react.svg";
-  import viteLogo from "/vite.svg";
-  import "./App.css";
-  import { Card } from "./components/Card.jsx";
-
+  ```jsx
   function App() {
     const [count, setCount] = useState(0);
 
     return (
       <>
-        <Card
-          src="https://images.pexels.com/photos/29536485/pexels-photo-29536485.jpeg"
-          title="CN Tower"
-        />
-        // passing the src and the title arguments here
-        <Card
-          src="https://images.pexels.com/photos/708587/pexels-photo-708587.jpeg"
-          title="Pizza"
-        />
-        // passing the src and the title arguments here
+        // passing the src and the title arguments here // card 1
+        <Card src="Image source 1" title="CN Tower" />
+        // card 2
+        <Card src="Image source 2" title="Pizza" />
+        // card 3
+        <Card src="Image source 3" title="Burj Khalifa" />
       </>
     );
   }
@@ -151,33 +129,17 @@ export default App;
 
 - in card function, we will use props.src and props.title to get access to the object properties that were added from app function.
 
-```js
+```jsx
 function Card(props) {
   return (
-    <div className="max-w-xs rounded-md shadow-md bg-black text-gray-100 mb-8">
-      <img
-        src={props.src} // ACCESSING OBJECT PROPERTIES
-        alt="image"
-        className="object-cover object-center w-full rounded-t-md h-72 bg-gray-500"
-      />
-      <div className="flex flex-col justify-between p-6 space-y-8">
-        <div className="space-y-2">
-          <h2 className="text-3xl font-semibold tracking-wide">
-            {props.title} // ACCESSING OBJECT PROPERTIES
-          </h2>
-          <p className="text-gray-400">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio
-            tempora ipsum soluta amet corporis accusantium aliquid consectetur
-            eaque!
-          </p>
-        </div>
-        <button
-          type="button"
-          className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md bg-gray-800 text-gray-200"
-        >
-          Follow
-        </button>
-      </div>
+    <div>
+      <img src={props.src} />
+
+      <h2>{props.title}</h2>
+
+      <p>some description about the image</p>
+
+      <button> Read more </button>
     </div>
   );
 }
@@ -187,16 +149,19 @@ function Card(props) {
 
 - Usually we can use destructuring of object, which makes the code more readable and preffered way of writing the code.
 - So instead of writing props.src and props.title, we can do something like this:
+- we can also give default values to our props so that if someone forgets to pass an argument, we can show something.
+  - default values are added like this:
+  - function Card({ src, title="No title" })
 
-  ```jsx
-  function Card({ src, title="No title" }) {
-    return (
-      <div>
-        <img src={src} />
-      </div>
-       <div>
-        <h2>{title}</h2>
-      </div>
-    );
-  }
-  ```
+```jsx
+function Card({ src, title="No title" }) {
+  return (
+    <div>
+      <img src={src} />
+    </div>
+     <div>
+      <h2>{title}</h2>
+    </div>
+  );
+}
+```
