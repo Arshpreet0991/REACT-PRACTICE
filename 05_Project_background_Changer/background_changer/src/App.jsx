@@ -1,25 +1,36 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import { CustomButtons } from "./components/CustomButtons.jsx";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [color, setColor] = useState("grey");
 
   return (
     <>
-      <div id="container" className="h-full w-full">
-        <button className="bg-red-600" onClick={changeBackgroundColor}>
-          Red
-        </button>
+      <div
+        className="h-screen w-full flex items-end pb-10"
+        style={{ backgroundColor: color }}
+      >
+        <div className="w-full flex flex-wrap justify-evenly gap-3">
+          <CustomButtons
+            title="Violet"
+            bgc="violet"
+            textColor="black"
+            setColor={setColor}
+          />
+          <CustomButtons title="Indigo" bgc="indigo" setColor={setColor} />
+          <CustomButtons title="Blue" bgc="blue" setColor={setColor} />
+          <CustomButtons title="Green" bgc="green" setColor={setColor} />
+          <CustomButtons
+            title="Yellow"
+            bgc="yellow"
+            textColor="black"
+            setColor={setColor}
+          />
+          <CustomButtons title="Red" bgc="red" setColor={setColor} />
+        </div>
       </div>
     </>
   );
-}
-
-function changeBackgroundColor() {
-  const container = document.getElementById("container");
-  container.className("bg-red-600");
 }
 
 export default App;
