@@ -1,4 +1,8 @@
-# Objective
+# 6.
+
+# useCallback, useEffect and useRef hooks
+
+## Objective
 
 - create a password generator
 - The user should be able to copy the password using a copy button.
